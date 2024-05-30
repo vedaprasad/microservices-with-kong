@@ -32,6 +32,24 @@ jobs:
     - name: Push bookings Docker image
       run: docker push vedaprasad/bookings:${BUILD_NUMBER}
 
+    - name: Build Docker image for movies
+      run: cd $GITHUB_WORKSPACE/microservices/movies/ && docker build -t vedaprasad/movies:${BUILD_NUMBER} .
+
+    - name: Push movies Docker image
+      run: docker push vedaprasad/movies:${BUILD_NUMBER}
+
+    - name: Build Docker image for showtimes
+      run: cd $GITHUB_WORKSPACE/microservices/showtimes/ && docker build -t vedaprasad/showtimes:${BUILD_NUMBER} .
+
+    - name: Push showtimes Docker image
+      run: docker push vedaprasad/showtimes:${BUILD_NUMBER}
+
+    - name: Build Docker image for user
+      run: cd $GITHUB_WORKSPACE/microservices/user/ && docker build -t vedaprasad/user:${BUILD_NUMBER} .
+
+    - name: Push user Docker image
+      run: docker push vedaprasad/user:${BUILD_NUMBER}
+
 
 
 
