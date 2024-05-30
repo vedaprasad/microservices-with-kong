@@ -3,5 +3,5 @@ WORKDIR /app
 COPY ./requirements.txt /app
 RUN pip install -r requirements.txt
 COPY . .
-ENV FLASK_APP=./services/user.py
+ENV FLASK_APP=./user.py
 CMD ["flask", "run", "--host", "0.0.0.0"]
