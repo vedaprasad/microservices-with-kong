@@ -1,5 +1,6 @@
-from .. helper import nice_json 
-from .. import root_dir
+from helper import nice_json 
+from helper import root_dir
+
 from flask import Flask
 import json
 from werkzeug.exceptions import NotFound
@@ -7,7 +8,7 @@ from werkzeug.exceptions import NotFound
 
 app = Flask(__name__)
 
-with open("{}./bookings.json".format(root_dir()), "r") as f:
+with open("bookings.json", "r") as f:
     bookings = json.load(f)
 
 
@@ -33,6 +34,7 @@ def booking_record(username):
         raise NotFound
 
     return nice_json(bookings[username])
+
 
 if __name__ == "__main__":
     app.run(port=5003, debug=True)

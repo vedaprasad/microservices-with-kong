@@ -1,4 +1,6 @@
-from services import root_dir, nice_json
+
+from helper import nice_json 
+
 from flask import Flask
 from werkzeug.exceptions import NotFound
 import json
@@ -6,7 +8,7 @@ import json
 
 app = Flask(__name__)
 
-with open("{}/database/movies.json".format(root_dir()), "r") as f:
+with open("movies.json", "r") as f:
     movies = json.load(f)
 
 
