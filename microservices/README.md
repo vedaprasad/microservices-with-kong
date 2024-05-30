@@ -16,32 +16,12 @@ Flask.
 Requirements
 ===========
 
-* Python 2.7
-* Works on Linux, Windows, Mac OSX and (quite possibly) BSD.
+
 
 Install
 =======
 
-The quick way is use the provided `make` file.
 
-<code>
-$ make install
-</code>
-
-Starting and Stopping Services
-==============================
-
-To launch the services:
-
-<code>
-$ make launch
-</code>
-
-To stop the services: 
-
-<code>
-$ make shutdown
-</code>
 
 
 APIs and Documentation
