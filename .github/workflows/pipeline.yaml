@@ -55,9 +55,13 @@ jobs:
       with:
         version: 'v3.0.0'
 
-    - name: Package Helm chart
+    - name: Package Helm chart for bookings
       run: helm package $GITHUB_WORKSPACE/microservices/bookings/helm/
 
-
+    - name: Upload Helm chart for bookings
+      uses: actions/upload-artifact@v2
+      with:
+        name: bookings
+        path: $GITHUB_WORKSPACE/microservices-with-kong/microservices-with-kong/bookings-0.1.0.tgz
 
     
