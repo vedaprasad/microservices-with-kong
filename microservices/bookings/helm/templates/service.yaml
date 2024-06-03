@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bookings-svc
+  labels:
+    app: bookings-svc
+spec:
+  ports:
+  - port: 8000
+    protocol: TCP
+    targetPort: 5000
+    name: http
+  selector:
+    app: bookings

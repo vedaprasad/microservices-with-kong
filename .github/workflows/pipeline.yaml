@@ -27,29 +27,36 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build Docker image for bookings
-      run: cd $GITHUB_WORKSPACE/microservices/bookings/ && docker build -t vedaprasad/bookings:${BUILD_NUMBER} .
+      run: cd $GITHUB_WORKSPACE/microservices/bookings/ && docker build -t vedaprasad/bookings .
 
     - name: Push bookings Docker image
-      run: docker push vedaprasad/bookings:${BUILD_NUMBER}
+      run: docker push vedaprasad/bookings
 
     - name: Build Docker image for movies
-      run: cd $GITHUB_WORKSPACE/microservices/movies/ && docker build -t vedaprasad/movies:${BUILD_NUMBER} .
+      run: cd $GITHUB_WORKSPACE/microservices/movies/ && docker build -t vedaprasad/movies.
 
     - name: Push movies Docker image
-      run: docker push vedaprasad/movies:${BUILD_NUMBER}
+      run: docker push vedaprasad/movies
 
     - name: Build Docker image for showtimes
-      run: cd $GITHUB_WORKSPACE/microservices/showtimes/ && docker build -t vedaprasad/showtimes:${BUILD_NUMBER} .
+      run: cd $GITHUB_WORKSPACE/microservices/showtimes/ && docker build -t vedaprasad/showtimes .
 
     - name: Push showtimes Docker image
-      run: docker push vedaprasad/showtimes:${BUILD_NUMBER}
+      run: docker push vedaprasad/showtimes
 
     - name: Build Docker image for user
-      run: cd $GITHUB_WORKSPACE/microservices/user/ && docker build -t vedaprasad/user:${BUILD_NUMBER} .
+      run: cd $GITHUB_WORKSPACE/microservices/user/ && docker build -t vedaprasad/user .
 
     - name: Push user Docker image
-      run: docker push vedaprasad/user:${BUILD_NUMBER}
+      run: docker push vedaprasad/user
 
+    - name: Install Helm
+      uses: azure/setup-helm@v1
+      with:
+        version: 'v3.0.0'
+
+    - name: Package Helm chart
+      run: helm package $GITHUB_WORKSPACE/microservices/bookings/helm/
 
 
 
