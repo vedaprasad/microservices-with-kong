@@ -33,7 +33,7 @@ jobs:
       run: docker push vedaprasad/bookings
 
     - name: Build Docker image for movies
-      run: cd $GITHUB_WORKSPACE/microservices/movies/ && docker build -t vedaprasad/movies.
+      run: cd $GITHUB_WORKSPACE/microservices/movies/ && docker build -t vedaprasad/movies .
 
     - name: Push movies Docker image
       run: docker push vedaprasad/movies
