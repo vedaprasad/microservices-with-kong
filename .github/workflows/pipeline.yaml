@@ -62,6 +62,6 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: bookings
-        path: $GITHUB_WORKSPACE/microservices-with-kong/microservices-with-kong/bookings-0.1.0.tgz
+        path: /home/runner/work/microservices-with-kong/microservices-with-kong/bookings-0.1.0.tgz
 
     
