@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: movies
+  name: {{ .Values.servicename }}
   labels:
-    app: movies
+    app: {{ .Values.servicename }}
 spec:
-  replicas: {{ .Values.replicaCount }} 
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: movies
+      app: {{ .Values.servicename }}
   template:
     metadata:
       labels:
-        app: movies
+        app: {{ .Values.servicename }}
     spec:
       containers:
-      - name: movies
+      - name: {{ .Values.servicename }}
         image: vedaprasad/movies
         imagePullPolicy: Always

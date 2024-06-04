@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bookings
+  name: {{ .Values.servicename }}
   labels:
-    app: bookings
+    app: {{ .Values.servicename }}
 spec:
-  replicas: {{ .Values.replicaCount }} 
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: bookings
+      app: {{ .Values.servicename }}
   template:
     metadata:
       labels:
-        app: bookings
+        app: {{ .Values.servicename }}
     spec:
       containers:
-      - name: bookings
+      - name: {{ .Values.servicename }}
         image: vedaprasad/bookings
         imagePullPolicy: Always

@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: showtimes-svc
+  name: {{ .Values.servicename }}-svc
   labels:
-    app: showtimes-svc
+    app: {{ .Values.servicename }}-svc
 spec:
   ports:
   - port: 8002
@@ -11,4 +11,4 @@ spec:
     targetPort: 5000
     name: http
   selector:
-    app: showtimes
+    app: {{ .Values.servicename }}

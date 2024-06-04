@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user
+  name: {{ .Values.servicename }}
   labels:
-    app: user
+    app: {{ .Values.servicename }}
 spec:
-  replicas: {{ .Values.replicaCount }} 
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: user
+      app: {{ .Values.servicename }}
   template:
     metadata:
       labels:
-        app: user
+        app: {{ .Values.servicename }}
     spec:
       containers:
-      - name: user
+      - name: {{ .Values.servicename }}
         image: vedaprasad/user
         imagePullPolicy: Always
