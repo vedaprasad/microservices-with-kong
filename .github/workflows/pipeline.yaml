@@ -57,7 +57,10 @@ jobs:
 
     - name: Package Helm chart for bookings
       run: helm package $GITHUB_WORKSPACE/microservices/bookings/helm/
-
+    
+    - name: set env var
+      run : export HELM_EXPERIMENTAL_OCI=1
+      
     - name: Login to Helm registry
       run: helm registry login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} registry-1.docker.io
 
