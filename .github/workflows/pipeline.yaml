@@ -59,7 +59,7 @@ jobs:
       run: helm package $GITHUB_WORKSPACE/microservices/bookings/helm/
     
     - name: set env var
-      run : export HELM_EXPERIMENTAL_OCI=1
+      run : echo "HELM_EXPERIMENTAL_OCI=1" >> $GITHUB_ENV
       
     - name: Login to Helm registry
       run: helm registry login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} registry-1.docker.io
