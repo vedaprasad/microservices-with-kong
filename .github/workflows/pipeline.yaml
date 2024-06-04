@@ -65,7 +65,7 @@ jobs:
       run: helm registry login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} registry-1.docker.io
 
     - name: Upload Helm chart for bookings
-      run: helm push --debug /home/runner/work/microservices-with-kong/microservices-with-kong/bookings-0.1.0.tgz oci://registry-1.docker.io/vedaprasad/bookings-helm
+      run: helm push /home/runner/work/microservices-with-kong/microservices-with-kong/bookings-0.1.0.tgz oci://registry-1.docker.io/vedaprasad/bookings-helm
 
 
     
