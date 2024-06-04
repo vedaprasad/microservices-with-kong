@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: showtimes
+  labels:
+    app: showtimes
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: showtimes
+  template:
+    metadata:
+      labels:
+        app: showtimes
+    spec:
+      containers:
+      - name: showtimes
+        image: vedaprasad/showtimes
+        imagePullPolicy: Always

@@ -67,5 +67,13 @@ jobs:
     - name: Upload Helm chart for bookings
       run: helm push /home/runner/work/microservices-with-kong/microservices-with-kong/bookings-0.1.0.tgz oci://registry-1.docker.io/vedaprasad
 
+    - name: Package Helm chart for bookings
+      run: helm package $GITHUB_WORKSPACE/microservices/bookings/helm/
+
+    - name: Upload Helm chart for bookings
+      run: helm push /home/runner/work/microservices-with-kong/microservices-with-kong/bookings-0.1.0.tgz oci://registry-1.docker.io/vedaprasad
+    
+
+
 
     
