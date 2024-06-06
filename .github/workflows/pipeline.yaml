@@ -6,6 +6,14 @@ on:
   pull_request:
     branches: [ "master" ]
 
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE}}
+  ARGOCD_AUTH_PASSWORD: ${{ secrets.ARGOCD_AUTH_PASSWORD}
+  ARGOCD_AUTH_USERNAME: ${{ secrets.ARGOCD_AUTH_USERNAME}
+
 jobs:
 
   build:
@@ -84,6 +92,29 @@ jobs:
 
     - name: Upload Helm chart for user
       run: helm push /home/runner/work/microservices-with-kong/microservices-with-kong/user-0.1.0.tgz oci://registry-1.docker.io/vedaprasad
+
+    - name: Setup Terraform with specified version on the runner
+      uses: hashicorp/setup-terraform@v2
+      with:
+         terraform_version: 1.7.0
+
+    - name: Terraform init
+      id: init
+      run: cd $GITHUB_WORKSPACE/microservices/bookings/terraform && terraform init -backend-config="bucket=$BUCKET_TF_STATE"
+
+    - name: Terraform validate
+      id: validate
+      run: cd $GITHUB_WORKSPACE/microservices/bookings/terraform && terraform validate
+
+    - name: Terraform plan
+      id: plan
+      run: cd $GITHUB_WORKSPACE/microservices/bookings/terraform && terraform plan -no-color -input=false
+      continue-on-error: true
+
+
+
+
+      
     
 
 
