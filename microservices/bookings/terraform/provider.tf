@@ -1,6 +1,4 @@
 provider "argocd" {
-username = "admin"
-password = "decor123" 
 server_addr = "argo.ved-tech.net"
 }
 

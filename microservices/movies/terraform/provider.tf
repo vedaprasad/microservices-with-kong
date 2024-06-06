@@ -1,3 +1,3 @@
 provider "argocd" {
- server_addr = "argo.ved-tech.net"
+ server_addr = "argo.ved-tech.net" 
 }
