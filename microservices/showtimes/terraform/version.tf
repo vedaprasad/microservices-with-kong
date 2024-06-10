@@ -1,6 +1,13 @@
 terraform {
   required_version = ">= 1.0"
 
+    backend "s3" {
+
+    bucket         = "ved-tf-state"
+    key            = "showtimes-state.tf"
+    region         = "ap-southeast-2"
+   }
+
   required_providers {
     helm = {
       source  = "hashicorp/helm"

@@ -98,22 +98,76 @@ jobs:
       with:
          terraform_version: 1.7.0
 
-    - name: Terraform init
+    - name: Terraform init bookings
       id: init
       run: cd $GITHUB_WORKSPACE/microservices/bookings/terraform && terraform init -backend-config="bucket=$BUCKET_TF_STATE"
 
-    - name: Terraform validate
+    - name: Terraform validate bookings
       id: validate
       run: cd $GITHUB_WORKSPACE/microservices/bookings/terraform && terraform validate
 
-    - name: Terraform plan
+    - name: Terraform plan bookings
       id: plan
       run: cd $GITHUB_WORKSPACE/microservices/bookings/terraform && terraform plan -no-color -input=false
       continue-on-error: true
 
-    - name: Terraform apply
+    - name: Terraform apply bookings
       id: apply
       run: cd $GITHUB_WORKSPACE/microservices/bookings/terraform && terraform apply -auto-approve -input=false
+      continue-on-error: true
+
+    - name: Terraform init movies
+      id: init
+      run: cd $GITHUB_WORKSPACE/microservices/movies/terraform && terraform init -backend-config="bucket=$BUCKET_TF_STATE"
+
+    - name: Terraform validate movies
+      id: validate
+      run: cd $GITHUB_WORKSPACE/microservices/movies/terraform && terraform validate
+
+    - name: Terraform plan movies
+      id: plan
+      run: cd $GITHUB_WORKSPACE/microservices/movies/terraform && terraform plan -no-color -input=false
+      continue-on-error: true
+
+    - name: Terraform apply movies
+      id: apply
+      run: cd $GITHUB_WORKSPACE/microservices/movies/terraform && terraform apply -auto-approve -input=false
+      continue-on-error: true
+
+    - name: Terraform init showtimes
+      id: init
+      run: cd $GITHUB_WORKSPACE/microservices/showtimes/terraform && terraform init -backend-config="bucket=$BUCKET_TF_STATE"
+
+    - name: Terraform validate showtimes
+      id: validate
+      run: cd $GITHUB_WORKSPACE/microservices/showtimes/terraform && terraform validate
+
+    - name: Terraform plan showtimes
+      id: plan
+      run: cd $GITHUB_WORKSPACE/microservices/showtimes/terraform && terraform plan -no-color -input=false
+      continue-on-error: true
+
+    - name: Terraform apply showtimes
+      id: apply
+      run: cd $GITHUB_WORKSPACE/microservices/showtimes/terraform && terraform apply -auto-approve -input=false
+      continue-on-error: true
+
+    - name: Terraform init user
+      id: init
+      run: cd $GITHUB_WORKSPACE/microservices/user/terraform && terraform init -backend-config="bucket=$BUCKET_TF_STATE"
+
+    - name: Terraform validate user
+      id: validate
+      run: cd $GITHUB_WORKSPACE/microservices/user/terraform && terraform validate
+
+    - name: Terraform plan user
+      id: plan
+      run: cd $GITHUB_WORKSPACE/microservices/user/terraform && terraform plan -no-color -input=false
+      continue-on-error: true
+
+    - name: Terraform apply user
+      id: apply
+      run: cd $GITHUB_WORKSPACE/microservices/user/terraform && terraform apply -auto-approve -input=false
       continue-on-error: true
 
 
