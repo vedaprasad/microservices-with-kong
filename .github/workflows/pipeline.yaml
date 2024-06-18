@@ -13,6 +13,7 @@ env:
   BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE }}
   ARGOCD_AUTH_PASSWORD: ${{ secrets.ARGOCD_AUTH_PASSWORD }}
   ARGOCD_AUTH_USERNAME: ${{ secrets.ARGOCD_AUTH_USERNAME }}
+  DOCKER_BUILDKIT: 1
 
 jobs:
 
@@ -35,7 +36,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build Docker image for bookings
-      run: cd $GITHUB_WORKSPACE/microservices/bookings/ && docker build -t vedaprasad/bookings .
+      run: cd $GITHUB_WORKSPACE/microservices/bookings/ && docker build --cache-from vedaprasad/bookings:latest -t vedaprasad/bookings --build-arg BUILDKIT_INLINE_CACHE=1 .
 
     - name: Push bookings Docker image
       run: docker push vedaprasad/bookings
