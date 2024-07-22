@@ -1,0 +1,19 @@
+curl -i -s -X POST http://kong-admin.ved-tech.net/services --data name=booking_svc  --data url='http://bookings-svc.default.svc.cluster.local:8000'
+curl -i -X POST http://kong-admin.ved-tech.net/services/booking_svc/routes --data 'paths[]=/api/bookings' --data name=booking_routes
+
+
+curl -i -s -X POST http://kong-admin.ved-tech.net/services --data name=movies_svc  --data url='http://movies-svc.default.svc.cluster.local:8001'
+curl -i -X POST http://kong-admin.ved-tech.net/services/movies_svc/routes --data 'paths[]=/api/movies' --data name=movies_routes
+
+curl -i -s -X POST http://kong-admin.ved-tech.net/services --data name=showtimes_svc  --data url='http://showtimes-svc.default.svc.cluster.local:8002'
+curl -i -X POST http://kong-admin.ved-tech.net/services/showtimes_svc/routes --data 'paths[]=/api/showtimes' --data name=showtimes_routes
+
+curl -i -s -X POST http://kong-admin.ved-tech.net/services --data name=user_svc  --data url='http://user-svc.default.svc.cluster.local:8003'
+curl -i -X POST http://kong-admin.ved-tech.net/services/user_svc/routes --data 'paths[]=/api/users' --data name=user_routes
+
+
+https://api.ved-tech.net/api/bookings/bookings
+https://api.ved-tech.net/api/movies/movies
+https://api.ved-tech.net/api/showtimes/showtimes
+https://api.ved-tech.net/api/users/users
+
